@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ta_caro/modules/login/login_controller.dart';
+import 'package:ta_caro/modules/login/repositories/login_repository.dart';
+import 'package:ta_caro/shared/services/database_services.dart';
 import 'package:ta_caro/shared/widgets/button_widget.dart';
 import 'package:ta_caro/shared/widgets/input_widget.dart';
 import 'package:validators/validators.dart';
@@ -12,18 +14,21 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final _controller = LoginController();
+  late final LoginController _controller;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
+    _controller =
+        LoginController(LoginRepository(databse: IDatabaseServices.instance));
     _controller.addListener(() {
       _controller.state.when(
-          success: (value) => Navigator.pushReplacementNamed(context, '/home'),
+          success: (value) => Navigator.pushReplacementNamed(context, '/home',
+              arguments: value),
           error: (message, _) => scaffoldKey.currentState!.showBottomSheet(
               (context) => BottomSheet(
                   onClosing: () {},
-                  builder: (context) => Container(child: Text(message)))),
+                  builder: (context) => SizedBox(child: Text(message)))),
           orElse: () {});
     });
     super.initState();

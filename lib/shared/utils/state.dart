@@ -15,8 +15,7 @@ abstract class IState {
   static empty() => StateEmpty();
   static loading() => StateLoading();
   static success<T>(T data) => StateSuccess<T>(data);
-  static error({required  String message, Exception? e}) =>
-      StateError(message: message, e: e);
+  static error(String message, {Exception? e}) => StateError(message, e: e);
 }
 
 class StateEmpty extends IState {
@@ -71,8 +70,8 @@ class StateError extends IState {
   final String message;
   final Exception? e;
 
-  StateError({
-    required this.message,
+  StateError(
+    this.message, {
     this.e,
   });
 

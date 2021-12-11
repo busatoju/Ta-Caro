@@ -8,6 +8,13 @@ class ButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
   final ButtonType buttonType;
 
+  const ButtonWidget({
+    Key? key,
+    required this.label,
+    required this.onPressed,
+    this.buttonType = ButtonType.fill,
+  }) : super(key: key);
+
   const ButtonWidget.login({
     Key? key,
     this.label = 'ENTRAR',

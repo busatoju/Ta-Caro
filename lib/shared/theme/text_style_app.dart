@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'theme_app.dart';
 
 abstract class ITextStyleApp {
+  TextStyle get titleListTile;
+  TextStyle get subtitleListTile;
+  TextStyle get chart;
+  TextStyle get leading;
   TextStyle get title;
   TextStyle get subtitle;
   TextStyle get label;
@@ -65,5 +68,36 @@ class TextStyleApp implements ITextStyleApp {
 
   @override
   TextStyle get title => GoogleFonts.inter(
-      fontSize: 22, color: ThemeApp.colors.title, fontWeight: FontWeight.bold);
+        fontSize: 22,
+        color: ThemeApp.colors.title,
+        fontWeight: FontWeight.bold,
+      );
+
+  @override
+  TextStyle get leading => GoogleFonts.inter(
+        fontSize: 12,
+        color: ThemeApp.colors.inputNormal,
+       
+      );
+
+  @override
+  TextStyle get titleListTile => GoogleFonts.inter(
+        fontSize: 16,
+        color: ThemeApp.colors.textColor,
+        fontWeight: FontWeight.w500,
+      );
+
+  @override
+  TextStyle get subtitleListTile => GoogleFonts.inter(
+        fontSize: 14,
+        color: ThemeApp.colors.textColor,
+        fontWeight: FontWeight.normal,
+      );
+
+  @override
+  TextStyle get chart => GoogleFonts.inter(
+        fontSize: 12,
+        color: ThemeApp.colors.textEnabled,
+        fontWeight: FontWeight.bold,
+      );
 }

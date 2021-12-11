@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ta_caro/shared/theme/theme_app.dart';
 
 class InputWidget extends StatelessWidget {
@@ -6,8 +7,21 @@ class InputWidget extends StatelessWidget {
   final String hint;
   final bool obscure;
   final bool isPassword;
+  final TextInputType keyboard;
+  final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
+
+  const InputWidget({
+    Key? key,
+    required this.label,
+    required this.hint,
+    this.obscure = false,
+    this.isPassword = false,
+    required this.validator,
+    this.inputFormatters,
+    this.onChanged, required this.keyboard,
+  }) : super(key: key);
 
   const InputWidget.name({
     Key? key,
@@ -17,6 +31,7 @@ class InputWidget extends StatelessWidget {
     this.isPassword = false,
     required this.validator,
     this.onChanged,
+    this.inputFormatters, this.keyboard = TextInputType.name,
   }) : super(key: key);
 
   const InputWidget.email({
@@ -27,6 +42,8 @@ class InputWidget extends StatelessWidget {
     this.isPassword = false,
     required this.validator,
     this.onChanged,
+    this.keyboard = TextInputType.emailAddress,
+    this.inputFormatters,
   }) : super(key: key);
 
   const InputWidget.password({
@@ -37,6 +54,8 @@ class InputWidget extends StatelessWidget {
     this.isPassword = true,
     required this.validator,
     this.onChanged,
+    this.keyboard = TextInputType.name,
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -56,6 +75,8 @@ class InputWidget extends StatelessWidget {
               return validator!(value ?? "");
             }
           },
+          keyboardType: keyboard,
+          inputFormatters: inputFormatters,
           onChanged: onChanged,
           style: ThemeApp.textStyles.input,
           decoration: InputDecoration(

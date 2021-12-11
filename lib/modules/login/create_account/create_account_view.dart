@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ta_caro/modules/login/repositories/login_repository.dart';
+import 'package:ta_caro/shared/services/database_services.dart';
 import 'package:ta_caro/shared/theme/theme_app.dart';
 import 'package:ta_caro/shared/widgets/button_widget.dart';
 import 'package:ta_caro/shared/widgets/input_widget.dart';
@@ -14,18 +16,20 @@ class CreateAccountView extends StatefulWidget {
 }
 
 class _CreateAccountViewState extends State<CreateAccountView> {
-  final _controller = CreateAccountController();
+  late final CreateAccountController _controller;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
+    _controller = CreateAccountController(
+        LoginRepository(databse: IDatabaseServices.instance));
     _controller.addListener(() {
       _controller.state.when(
-          success: (value) => Navigator.pushReplacementNamed(context, '/home'),
+          success: (value) => Navigator.pop(context),
           error: (message, _) => scaffoldKey.currentState!.showBottomSheet(
                 (context) => BottomSheet(
                   onClosing: () {},
-                  builder: (context) => Container(
+                  builder: (context) => SizedBox(
                     child: Text(message),
                   ),
                 ),

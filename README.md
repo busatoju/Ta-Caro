@@ -1,16 +1,18 @@
-# ta_caro
+# 💸 Ta Caro App - Flutter Race #1
 
-A new Flutter project.
+Um aplicativo desenvolvido em [Flutter](https://flutter.dev) no evento [Flutter Race #1](https://cadastro.flutterrace.com/primeira), com intuito de ajudar as pessoas a terem um melhor controle dos preços dos produtos.
 
-## Getting Started
+## Packages utilizados
+  - [Validators](https://pub.dev/packages/validators)
+  - [SupaBase](https://pub.dev/packages/supabase/install)
+  - [Google Fonts](https://pub.dev/packages/google_fonts)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Protótipo do App 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Para visualizar o protótipo do App, acesse o [Figma](https://www.figma.com/file/CsfyVWVtilcgorNC3lvmvA/Tá-caro%3F-(Copy)).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Observação
+
+Como uma forma de segurança a URL e API Key do Supabase estão ocultos, portanto para testar o aplicativo, basta fazer o download do [APK]().
